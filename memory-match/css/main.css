@@ -1,0 +1,81 @@
+* {
+  border: 3px solid lime;
+}
+
+body {
+  background-color: #002145;
+  color: lime;
+  font-family: Courier;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* set container specs - fixed w & h + center */
+#container {
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-around;
+  padding: 4px 30px;
+}
+
+#square {
+  align-self: center;
+  border: 2px solid lime;
+  height: 165px;
+  width: 165px;
+}
+
+/* <====== BUTTON CLASSES ======> */
+/* .button-A {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-B {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-C {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-D {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-E {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-F {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-G {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+}
+
+.button-H {
+  width: 20vw;
+  height: 20vw;
+  border: 2px lime solid;
+} */

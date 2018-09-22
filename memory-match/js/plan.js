@@ -12,12 +12,15 @@
 //create buttons
   //generate 16 buttons in html or a for loop squares grid
 
-//set images
+//set images *
   //set outer images on card-buttons
   //create 8 card classes (a-h or 0-7)
     //assign 2 cards to each class
   //set inner images on cards
     //1 image per class, assigned to 2 cards in that class
+
+// * button with image names
+//   btn-A.img1, btn-A.img2
 
 //=========================
 //   CARD FUNCTIONALITY

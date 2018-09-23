@@ -2,6 +2,10 @@
   border: 3px solid lime;
 }
 
+/* ----------------------------------- */
+/* -------- General Properties ------- */
+/* ----------------------------------- */
+
 body {
   background-color: #002145;
   color: lime;
@@ -9,73 +13,135 @@ body {
 }
 
 h1 {
+  font-size: 32px;
   text-align: center;
 }
 
-/* set container specs - fixed w & h + center */
-#container {
-  width: 800px;
-  height: 800px;
-  margin: 0 auto;
+/* ------------------------------------- */
+/* -------- Container & Squares -------- */
+/* ------------------------------------- */
+
+.container {
+  align-content: space-around;
   display: flex;
   flex-flow: row wrap;
+  height: 750px;
   justify-content: space-between;
-  align-content: space-around;
-  padding: 4px 30px;
+  margin: 0 auto;
+  padding: 4px 20px 4px 22px;
+  width: 750px;
 }
 
-#square {
+.card {
   align-self: center;
   border: 2px solid lime;
   height: 165px;
+  position: relative;
+  /* transform-style: preserve-3d; */
+  transition: transform 1.5s;
   width: 165px;
 }
 
-/* <====== BUTTON CLASSES ======> */
-/* .button-A {
+/* not sure about this one -- this set a column */
+/* #card.wrapper {
+  perspective: 800px;
+} */
+
+/* #card.flipped {
+  /* backface-visibility: hidden; */
+  /* transform: rotateY(-180deg);
+} */
+
+
+/* #card.reverseFlip {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+} */
+/* #card.flipToFront {
+  backface-visibility: visible;
+  transform: rotateY(180deg);
+} */
+
+
+.card > .front {
+  backface-visibility: hidden;
+  background-image: url('images/apple.jpg');
+  height: 165px;
+  position: absolute;
+  transform: perspective(1000px;) rotateY(0deg);
+  transition: transform 1s linear 0s;
+  width: 165px;
+  /* z-index: 2; */
+  /* z-index: 0; */
+  /* border: 2px solid lime;
+  height: 165px;
+  width: 165px; */
+  /* transform: rotateY(180deg); */
+  /* z-index: 2;
+  background-size: 100% 100%;
+  transform: rotateY(0deg); */
+  /* display: inline-block; */
+  /* background-image: url('images/apple.jpg'); */
+  /* background-size: cover;
+  z-index: 1; */
+}
+
+.card > .back {
+  backface-visibility: hidden;
+  background-image: url('images/000.jpg');
+  height: 165px;
+  position: absolute;
+  transform: perspective(1000px) rotateY(180deg);
+  transition: transform 1s linear 0s;
+  width: 165px;
+  /* align-self: center; */
+  /* backface-visibility: visible; */
+  /* background-image: url('images/000.jpg');
+  background-size: cover;
+  height: 165px;
+  position: absolute;
+  transform: rotateY(-180deg);
+  width: 165px; */
+  /* z-index: 1; */
+  /* z-index: -1; */
+  /* border: 2px solid lime;
+  height: 165px;
+  width: 165px; */
+}
+
+.card.rotated > .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.card.rotated > .back {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+/*-------------------------------------*/
+/*-------- Card-Button Classes --------*/
+/*-------------------------------------*/
+
+/* #back, img-A, img-B {
+  background-image: url('images/000.jpg')
+}
+
+#back img-C, img-D {
+  background-image: url('images/001.jpg')
+} */
+/* .img-A {
+  background-image: url('images/000.jpg')
+} */
+
+/* .button-B {
   width: 20vw;
   height: 20vw;
   border: 2px lime solid;
 }
 
-.button-B {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
+/*-------------------------------------*/
+/*------------- Animations ------------*/
+/*-------------------------------------*/
 
-.button-C {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
-
-.button-D {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
-
-.button-E {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
-
-.button-F {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
-
-.button-G {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
-}
-
-.button-H {
-  width: 20vw;
-  height: 20vw;
-  border: 2px lime solid;
+/* .transform {
+  transform: rotateY(180deg);
 } */

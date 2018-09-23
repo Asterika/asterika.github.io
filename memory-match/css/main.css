@@ -38,7 +38,7 @@ h1 {
   height: 165px;
   position: relative;
   /* transform-style: preserve-3d; */
-  transition: transform 1.5s;
+  /* transition: transform 1.5s; */
   width: 165px;
 }
 
@@ -68,9 +68,11 @@ h1 {
   background-image: url('images/apple.jpg');
   height: 165px;
   position: absolute;
-  transform: perspective(1000px;) rotateY(0deg);
+  transform: perspective(600px;) rotateY(0deg);
   transition: transform 1s linear 0s;
   width: 165px;
+
+
   /* z-index: 2; */
   /* z-index: 0; */
   /* border: 2px solid lime;
@@ -91,7 +93,7 @@ h1 {
   background-image: url('images/000.jpg');
   height: 165px;
   position: absolute;
-  transform: perspective(1000px) rotateY(180deg);
+  transform: perspective(600px) rotateY(180deg);
   transition: transform 1s linear 0s;
   width: 165px;
   /* align-self: center; */

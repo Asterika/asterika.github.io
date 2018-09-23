@@ -17,7 +17,7 @@
     //assign 1 background image to 16 html card-buttons
   //initial: create 8 card classes (a-h or 0-7)
     //assign 2 cards to each class
-  //set inner images on cards
+  //set inner images on cards - DONE
     //create binary number images
     //2 images per class (i.e. btn-A.img1, btn-A.img2)
 
@@ -27,16 +27,16 @@
 
 //define a turn
   //create a function "takeTurn"
-    //create a function "executeClick"
-      //click 1 + flip
-      //click 2 + flip
-    //create a function "determineMatch"
+    //create a function "executeClick", REVISED: flipCard
+      //click 1 + flip, stay
+      //click 2 + flip, stay
+    //create a function "checkPair"
       //if cardA.imgA && cardA.imgA === true {
-        //pair
+        //match
           //fade dark
           //set unclickable
       //} else {
-        //noPair
+        //noMatch
           //flip to initial state
       //}
 

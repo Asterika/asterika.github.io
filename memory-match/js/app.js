@@ -1,13 +1,70 @@
 $(() => {
 
+//create a function to randomize placement of cards on grid
+  //use either Math.random OR shuffle array of possible cards?
+
+
 // const currentTurn = () => {
 //
 // }
 
-//set card to flip front-to-back on click (card will turn -180deg)
-$('.card').click(function() {
-  $(this).toggleClass('rotated');
-});
+//create a function to limit player to two clicks/turn
+
+
+//create a function to flip card to view back
+  //function initiates on click
+  //function allows only one click
+  //card rotates -180 degrees
+const $flipToBack = () => {
+  $('.card').one('click', (function() {
+    $(this).toggleClass('rotated');
+  }));
+}
+
+$flipToBack();
+
+//create a function to checkPair
+  //within function, create an if/else statement
+    //if images on cards match
+        //have card images fade to black background
+    //if there is no match
+        //(created animated shake feature for both)
+        //auto return flipped cards to original/front state
+// const $checkPair = () => {
+//   //if card front matches card back
+//   if()
+//
+// }
+
+//create a function to flip card to original state/front
+  //function initiates only upon noMatch if/else statement
+  //card rotates 180 degrees
+  //limit function to one click
+// const $flipToFront = () => {
+//
+// }
+
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //set card to flip back-to-front on click (card will turn 180deg)
 // $('#card').click(function() {
@@ -57,4 +114,3 @@ $('.card').click(function() {
 //begin turn again -- loop this way until:
     //all cards have been matched OR
     //timer runs out
-})

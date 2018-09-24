@@ -1,7 +1,7 @@
 $(() => {
-//===============================
-// STORE CARDS & PUSH INTO ARRAY
-//===============================
+//================================
+//  STORE CARDS & PUSH INTO ARRAY
+//================================
 //create an array to store all back image possibilities
 const cards = [
   { name: '000', img: 'images/000.jpg' },
@@ -28,16 +28,16 @@ const cards = [
 //create an array to store flipped cards (to check for match)
 const cardsFlipped = [];
 
-//for testing, create a variable to represent object1 in the cards array
-let cardOne = (cards[0]);
-
-//push first card into cardsFlipped array:
-cardsFlipped.push('cardOne');
-// console.log('Card one flipped');
-
-//for testing, create a variable to represent object2 in the cards array + push it to cardsFlipped array
-let cardTwo = (cards[1]);
-cardsFlipped.push('cardTwo');
+// //for testing, create a variable to represent object1 in the cards array
+// let cardOne = (cards[0]);
+//
+// //push first card into cardsFlipped array:
+// cardsFlipped.push('cardOne');
+// // console.log('Card one flipped');
+//
+// //for testing, create a variable to represent object2 in the cards array + push it to cardsFlipped array
+// let cardTwo = (cards[1]);
+// cardsFlipped.push('cardTwo');
 // console.log('Card two flipped');
 
 //===============================
@@ -48,21 +48,39 @@ cardsFlipped.push('cardTwo');
 const $flipCard = () => {
   //function initiates on click
   //function allows only one click per card (no returning card to initial state)
-  $('.card').one('click', (function() {
+  $('.card').one('click', (e) => {
+    let $(targ)
     //card rotates -180 degrees
     $(this).toggleClass('rotated');
   }));
-  const countFlips() {
-    if($flipCard.length > 2) {
-      return false;
-    } else if ($flipCard.length === 2) {
-      checkPair();
-    }
-  }
-}
+  // const countFlips = () => {
+//     if(cardsFlipped.length > 2) {
+//       return false;
+//     } else if (cardsFlipped.length === 2) {
+//       // checkPair()
+//       alert('You have flipped 2 cards');
+//     }
+//    }
+// }));
+
+
 
 //call the function
 $flipCard();
+
+}
+})
+// const countFlips = () => {
+//   if($flipCard > 2) {
+//     return false;
+//   } else if ($flipCard === 2) {
+//     // checkPair()
+//     alert('You have flipped 2 cards');
+//   }
+//  }
+
+ //call the function
+ // countFlips();
 
 
 //==============================
@@ -70,31 +88,31 @@ $flipCard();
 //==============================
 
 //create a function to check if pair of flipped cards matches
-const checkPair = () => {
-  //call $flipCard() function to ensure cards have been flipped
-  $flipCard();
-    //check that 2 cards, and only 2 cards, have been flipped
-    if(cardsFlipped.length === 2) {
-      //check for a match
-      if(cardsFlipped[0] === cardsFlipped[1]) {
-        //ULTIMATELY...call match() function
-            //add animation
-
-            //remove event listener on 2 matched cards???
-
-        //FOR NOW...placeholder alert
-        alert('Match!!!');
-      } else {
-        //ULTIMATELY...call noMatch() function
-          //add animation - shake/vibrate
-
-          //return cards to initial state through reverseFlip() function
-
-        //FOR NOW...placeholder alert
-        alert('No match!');
-      }
-    }
-}
+// const checkPair = () => {
+//   // //call $flipCard() function to ensure cards have been flipped
+//   // $flipCard();
+//     //check that 2 cards, and only 2 cards, have been flipped
+//     if(cardsFlipped.length === 2) {
+//       //check for a match
+//       if(cardsFlipped[0] === cardsFlipped[1]) {
+//         //ULTIMATELY...call match() function
+//             //add animation
+//
+//             //remove event listener on 2 matched cards???
+//
+//         //FOR NOW...placeholder alert
+//         alert('Match!!!');
+//       } else {
+//         //ULTIMATELY...call noMatch() function
+//           //add animation - shake/vibrate
+//
+//           //return cards to initial state through reverseFlip() function
+//
+//         //FOR NOW...placeholder alert
+//         alert('No match!');
+//       }
+//     }
+// }
 //
 //===============================
 //        MATCH & NOMATCH
@@ -186,10 +204,12 @@ const checkPair = () => {
 // }
 
 
+// countFlips();
+// flipCard();
+// // checkPair();
 
 
 
-})
 
 
 

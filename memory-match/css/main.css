@@ -21,7 +21,18 @@ h1 {
 /* -------- Container & Squares -------- */
 /* ------------------------------------- */
 
-.container {
+/* .container {
+  align-content: space-around;
+  display: flex;
+  flex-flow: row wrap;
+  height: 750px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 4px 20px 4px 22px;
+  width: 750px;
+} */
+
+.grid {
   align-content: space-around;
   display: flex;
   flex-flow: row wrap;
@@ -118,6 +129,29 @@ h1 {
 .card.rotated > .back {
   transform: perspective(600px) rotateY(0deg);
 }
+
+.background {
+  background-color: black;
+}
+
+/* .darken {
+  background-image:
+  linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+    ),
+    url(images/000.jpg);
+} */
+
+/* .animation {
+  animation-name: fade-to-black;
+  animation-duration: .5s;
+}
+
+@keyframes fade-to-black {
+  100% {background: '.card.back'}
+  0% {background: black};
+} */
 
 /*-------------------------------------*/
 /*-------- Card-Button Classes --------*/

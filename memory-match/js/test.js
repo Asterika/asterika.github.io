@@ -21,6 +21,17 @@ const cards = [
   { name: '111', img: 'images/111.jpg' },
   { name: '111', img: 'images/111.jpg' },
 ];
+
+// const generateGrid () {
+//   cardsFlipped = 0;
+//   cards = _.shuffle(cards);
+//   //for loop to populate grid?
+// }
+
+//OR:
+// cards.sort(function() {return 0.5 - Math.random() });
+
+
    //multiply number of cards in array by 2???
     //FOR NOW, simply add a copy of each card to test randomization
  //create an array to store flipped cards (to check for match)
@@ -90,142 +101,65 @@ const checkPair = () => {
         cardsFlipped = [];
 
       } else {
-        console.log(cardsFlipped[0].parent().parent());
-        console.log(cardsFlipped[1].parent().parent());
-        //add animation -- cardsFlipped[1]
-        // cardsFlipped[0].parent().parent().removeClass('rotated');
-        window.setTimeout(function() {cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
-        // cardsFlipped[1].parent().parent().removeClass('rotated');
-        //run .one on each of cards in array or [0]/[1]
-        //flip cards
-        //empty array
-        window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
-        // console.log(window);
+        noMatch();
       }
-    } else {
     }
- }
+}
+
 
 const match = () => {
   $(cardsFlipped[0]).parent().parent().addClass('match');
   $(cardsFlipped[1]).parent().parent().addClass('match');
 }
 
-// const match = () => {
-//  let flipped = document.querySelectorAll('.flipped');
-//  flipped.forEach(card => {
-//    card.addClass('match');
-//  });
-// }
-//
-// const noMatch = () => {
-//
-// }
-//
-// const reverseFlip = () => {
-//
-// }
+const noMatch = () => {
+  //STILL NEED:
+    //RE-INITIATE oneclick on flipped cards run .one on each of cards in array or [0]/[1]
+    //flip cards
+    //empty array
 
+  window.setTimeout(function() {cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
+  //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
 
-//GET THE ID FOR THAT CARD AND GET IT TO LOG
+  window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
+  //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
 
+//ISSUE - CAN'T RESUME .ONE CLICK ON PREVIOUSLY FLIPPED cards
+  //EXPLORE PREVIOUS OBJECT...
+  // window.setTimeout(function() {cardsFlipped[0].one('click') }, 1400);
+  // window.setTimeout(function() {cardsFlipped[1].one('click') }, 1420);
 
-// }
-  //function initiates on click
-  //function allows only one click per card (no returning card to initial state)
-//   $('.card').one('click', () => {
-//     //card rotates -180 degrees
-//     $(this).toggleClass('rotated');
-//   }));
-//   const countFlips = () => {
-//     if(cardsFlipped.length > 2) {
-//       return false;
-//     } else if (cardsFlipped.length === 2) {
-//       // checkPair();
-//       alert('Hallelujah! Max flips achieved!');
-//     }
-//   }
-// }
- //call the function
-// flipCard();
+  window.setTimeout(function() {cardsFlipped = [] }, 1500);
+  //run .one('click') on all cards in array or [0]/[1]
+
+}
 });
  //==============================
 //      CHECK FOR A MATCH
 //==============================
-//  //create a function to check if pair of flipped cards matches
-// const checkPair = () => {
-//   //call $flipCard() function to ensure cards have been flipped
-//   $flipCard();
-//     //check that 2 cards, and only 2 cards, have been flipped
-//     if(cardsFlipped.length === 2) {
-//       //check for a match
-//       if(cardsFlipped[0] === cardsFlipped[1]) {
-//         //ULTIMATELY...call match() function
-//             //add animation
-//  // const currentTurn = () => {
-//             //remove event listener on 2 matched cards???
-//          //FOR NOW...placeholder alert
-//         // alert('Match!!!');
-//       } else {
-//         //ULTIMATELY...call noMatch() function
-//           //add animation - shake/vibrate
-//            //return cards to initial state through reverseFlip() function
-//          //FOR NOW...placeholder alert
-//         alert('No match!');
-//       }
-//     }
-//  }
 
-//
 //===============================
 //        MATCH & NOMATCH
 //===============================
-
 
 //===============================
 //       WIN & LOSS STATES
 //===============================
 
+//create winState function
+
+  //if all cards have been flipped and matched
+    //prompt -- play again? / reset game?
+    //congratulations modal
+    //digital rain
+
+//create lossState function
+
+  //else if all cards have not been matched by timer
+      //LOSS
+      //system failure modal
+      //reset button
 
 //===============================
 //          GRID RESET
 //===============================
- // //create a function to randomize placement of cards on grid
-//     //use either Math.random OR shuffle array of possible cards?
-//     //container = grid or cards = grid?
-//     // yourArray.sort(function() { return 0.5 - Math.random() });
-// cards.sort(function() {return 0.5 - Math.random() });
-//     cards.sort(() => 0.5 - Math.random());
-//
-// //create a function that defines a 'turn'
-//     //define flip/clickOne and flip/clickTwo ($flipToBack = one click)
-//     //create a function to limit player to two flips/clicks per turn
-//
-// //create a function -- checkPair -- to define a match
-//     //if match:
-//         //animation options: fade, darken, hide, replace img with color
-//         //remove eventListener from matched cards
-//     //if noMatch:
-//         //animation: shake/vibrate previously flipped/clicked cards
-//         //reverseFlip
-//         //next turn
-
- //create a function to limit number of clicks to 2
-// const countFlips() {
-//   if($flipCard.length > 2) {
-//     return false;
-//   } else if ($flipCard.length === 2) {
-//     checkPair();
-//   }
-// }
-
- //create a function to flip card to view back
-  //function initiates on click
-  //function allows only one click
-  //card rotates -180 degrees
-// const $flipToBack = () => {
-//   $('.card').one('click', (function() {
-//     $(this).toggleClass('rotated');
-//   }));
-// }
-//  $flipToBack();

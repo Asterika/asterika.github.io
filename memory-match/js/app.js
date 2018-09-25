@@ -2,6 +2,11 @@ $(() => {
 //================================
 //  STORE CARDS & PUSH INTO ARRAY
 //================================
+
+const generateGrid () {
+  
+}
+
 //create an array to store all back image possibilities
 const cards = [
   { name: '000', img: 'images/000.jpg' },
@@ -22,6 +27,7 @@ const cards = [
   { name: '111', img: 'images/111.jpg' },
 ];
 
+cards = _.shuffle(cards);
   //multiply number of cards in array by 2???
     //FOR NOW, simply add a copy of each card to test randomization
 
@@ -45,7 +51,7 @@ const cardsFlipped = [];
 //===============================
 
 //create a function to flip card to view back
-const $flipCard = () => {
+const flipCard = () => {
   //function initiates on click
   //function allows only one click per card (no returning card to initial state)
   $('.card').one('click', (e) => {
@@ -66,7 +72,7 @@ const $flipCard = () => {
 
 
 //call the function
-$flipCard();
+flipCard();
 
 }
 })

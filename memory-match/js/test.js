@@ -19,31 +19,40 @@ $(() => {
 //===============================
 // STORE CARDS & PUSH INTO ARRAY
 //===============================
+
+// const cards = () => {
+//   for (let i = 0; i < 16; i++) {
+//     let cards = document.createElement('div');
+//     cards.className =
+//   }
+// }
 //create an array to store all back image possibilities
-const cards = [
-  { name: '000', img: 'images/000.jpg' },
-  { name: '000', img: 'images/000.jpg' },
-  { name: '001', img: 'images/001.jpg' },
-  { name: '001', img: 'images/001.jpg' },
-  { name: '010', img: 'images/010.jpg' },
-  { name: '010', img: 'images/010.jpg' },
-  { name: '011', img: 'images/011.jpg' },
-  { name: '011', img: 'images/011.jpg' },
-  { name: '100', img: 'images/100.jpg' },
-  { name: '100', img: 'images/100.jpg' },
-  { name: '101', img: 'images/101.jpg' },
-  { name: '101', img: 'images/101.jpg' },
-  { name: '110', img: 'images/110.jpg' },
-  { name: '110', img: 'images/110.jpg' },
-  { name: '111', img: 'images/111.jpg' },
-  { name: '111', img: 'images/111.jpg' },
+const images = [
+  { name: '000', img: 'images/000.jpg', value: '000' },
+  { name: '000', img: 'images/000.jpg', value: '000' },
+  { name: '001', img: 'images/001.jpg', value: '001' },
+  { name: '001', img: 'images/001.jpg', value: '001' },
+  { name: '010', img: 'images/010.jpg', value: '010' },
+  { name: '010', img: 'images/010.jpg', value: '010' },
+  { name: '011', img: 'images/011.jpg', value: '011' },
+  { name: '011', img: 'images/011.jpg', value: '011' },
+  { name: '100', img: 'images/100.jpg', value: '100' },
+  { name: '100', img: 'images/100.jpg', value: '100' },
+  { name: '101', img: 'images/101.jpg', value: '101' },
+  { name: '101', img: 'images/101.jpg', value: '101' },
+  { name: '110', img: 'images/110.jpg', value: '110' },
+  { name: '110', img: 'images/110.jpg', value: '110' },
+  { name: '111', img: 'images/111.jpg', value: '111' },
+  { name: '111', img: 'images/111.jpg', value: '111' },
 ];
 
-// const generateGrid () {
-//   cardsFlipped = 0;
-//   cards = _.shuffle(cards);
-//   //for loop to populate grid?
+
+// let cards = document.querySelectorAll(.cards);
+//
+//   for (let i=0; i < cards.length; i++) {
+//     cards.style.backgroundImage = cards[i]
 // }
+
 
 //OR:
 // cards.sort(function() {return 0.5 - Math.random() });
@@ -89,7 +98,7 @@ let cardsFlipped = [];
   //function initiates on click
   //function allows only one click per card (no returning card to initial state)
 
-  $('.card').one('click', function (e) {
+  $('.card').on('click', function (e) {
     let $target = $(e.currentTarget);
     let $img;
     let $parent = $target.parent().parent();
@@ -101,6 +110,10 @@ let cardsFlipped = [];
     checkPair();
   });
 
+  // let addOneClick = () => {
+  //
+  // }
+
 
 const checkPair = () => {
     //check that 2 cards, and only 2 cards, have been flipped
@@ -111,6 +124,7 @@ const checkPair = () => {
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
         // console.log(cardsFlipped);
         match();
+        // offClick();
 
         //remove event addEventListener -- no need to remove, since .one click is there
         // cardsFlipped[0]
@@ -124,13 +138,31 @@ const checkPair = () => {
 
 
 const match = () => {
-  $(cardsFlipped[0]).parent().parent().addClass('match');
-  $(cardsFlipped[1]).parent().parent().addClass('match');
+
+  // window.setTimeout(function() {cardsFlipped[0].parent().parent().addClass('match') }, 1200);
+  // window.setTimeout(function() {cardsFlipped[1].parent().parent().addClass('match') }, 1200);
+  (cardsFlipped[0]).parent().parent().addClass('match');
+  (cardsFlipped[1]).parent().parent().addClass('match');
+
+// const offClick = () => {
+//   window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
+//   window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
+  $('.card').off('click');
+// }
+
+  window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
+  window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
+
+  // window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
+  // window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
+  // $(cardsFlipped[0]).parent().parent().addClass('match').off('click');
+  // $(cardsFlipped[1]).parent().parent().addClass('match').off('click'));
 }
 
 const noMatch = () => {
   //STILL NEED:
     //RE-INITIATE oneclick on flipped cards run .one on each of cards in array or [0]/[1]
+      //resolved with onclick
     //flip cards
     //empty array
 
@@ -139,6 +171,9 @@ const noMatch = () => {
 
   window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
   //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
+
+  // window.setTimeout(function() {cardsFlipped[0].$('.card').on('click', ) }, 1250);
+  // window.setTimeout(function() {cardsFlipped[1].$('.card').on('click') }, 1250);
 
   window.setTimeout(function() {cardsFlipped = [] }, 1300);
 

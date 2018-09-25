@@ -152,7 +152,7 @@ h1 {
 } */
 
 .match {
-  border: 2px solid red;
+  border: 2px solid red;  
   animation: 1s matchAnimation ease-in-out;
   animation-delay: .4s;
 }

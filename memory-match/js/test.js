@@ -1,10 +1,19 @@
 $(() => {
 
-//ISSUES AS OF M, 9/24:
-    //Randomize card placement in section/grid
-    //Re-assign .one(click) to previously flipped cards so they can be flipped again
-    //Code win state
-    //Code loss state
+ISSUES AS OF T, 9/25:
+    Randomize card placement in section/grid
+
+    Re-assign .one(click) to previously flipped cards so they can be flipped again
+        update: changed one click to on click
+        NOW NEED TO STOP CLICKS AFTER MATCH:
+        WORKS FOR FIRST CARD, not second:
+          $('.card').off('click');
+
+    Ensure only two cards can be clicked at a time:
+      * setTimeout on noMatch() ???
+      * create a function for on click -- include in checkPair?
+      
+    Code loss state
 
 //ADD ONs:
     //background images
@@ -27,7 +36,7 @@ $(() => {
 //   }
 // }
 //create an array to store all back image possibilities
-const images = [
+const cards = [
   { name: '000', img: 'images/000.jpg', value: '000' },
   { name: '000', img: 'images/000.jpg', value: '000' },
   { name: '001', img: 'images/001.jpg', value: '001' },
@@ -97,7 +106,9 @@ let cardsFlipped = [];
 
   //function initiates on click
   //function allows only one click per card (no returning card to initial state)
-
+// const onClick = () => {
+//
+// }
   $('.card').on('click', function (e) {
     let $target = $(e.currentTarget);
     let $img;
@@ -114,6 +125,7 @@ let cardsFlipped = [];
   //
   // }
 
+const matchedCards = [];
 
 const checkPair = () => {
     //check that 2 cards, and only 2 cards, have been flipped
@@ -125,7 +137,10 @@ const checkPair = () => {
         // console.log(cardsFlipped);
         match();
         // offClick();
+        matchedCards.push(cardsFlipped[0]);
+        matchedCards.push(cardsFlipped[1]);
 
+        checkForWin();
         //remove event addEventListener -- no need to remove, since .one click is there
         // cardsFlipped[0]
         cardsFlipped = [];
@@ -147,11 +162,17 @@ const match = () => {
 // const offClick = () => {
 //   window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
 //   window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
-  $('.card').off('click');
+//WORKS FOR FIRST CARD!!!!!
+  // $('.card').off('click');
 // }
 
-  window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
-  window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
+// const offClick = () => {
+//
+// }
+
+// WORKS FOR FIRST CARD
+//   window.setTimeout(function() {cardsFlipped[0].parent().off('click') }, 1200);
+//   window.setTimeout(function() {cardsFlipped[1].parent().off('click') }, 1200);
 
   // window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
   // window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
@@ -184,7 +205,7 @@ const noMatch = () => {
 
   //run .one('click') on all cards in array or [0]/[1]
 }
-});
+
 
  //==============================
 //      CHECK FOR A MATCH
@@ -199,11 +220,27 @@ const noMatch = () => {
 //===============================
 
 //create winState function
+const checkForWin = () => {
+  //if all cards matched
+    if (matchedCards.length === 16) {
+      // console.log(cardsFlipped)
+    console.log('Winner winner chicken dinner!');
+  } else {
+    //do nothing
+  }
+}
+  //win alert/prompt
 
-  //if all cards have been flipped and matched
-    //prompt -- play again? / reset game?
-    //congratulations modal
-    //digital rain
+  //option to reset
+
+// checkForWin();
+
+});
+
+  // if all cards have been flipped and matched
+  //   prompt -- play again? / reset game?
+  //   congratulations modal
+  //   digital rain
 
 //create lossState function
 

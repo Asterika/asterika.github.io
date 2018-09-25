@@ -136,7 +136,7 @@ h1 {
     background: black;
   }
   100% {
-    background-image: url('images/000.jpg');
+    background-image: url('images/000.jpg'), url('images/001.jpg'), url('images/010.jpg'), url('images/011.jpg'), url('images/100.jpg'), url('images/101.jpg'), url('images/110.jpg'), url('images/111.jpg');
   }
 }
 /* .overlay {

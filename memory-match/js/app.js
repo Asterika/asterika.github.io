@@ -27,7 +27,7 @@ const cards = [
   { name: '111', img: 'images/111.jpg' },
 ];
 
-cards = _.shuffle(cards);
+
   //multiply number of cards in array by 2???
     //FOR NOW, simply add a copy of each card to test randomization
 

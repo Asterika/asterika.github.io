@@ -1,4 +1,21 @@
 $(() => {
+
+//ISSUES AS OF M, 9/24:
+    //Randomize card placement in section/grid
+    //Re-assign .one(click) to previously flipped cards so they can be flipped again
+    //Code win state
+    //Code loss state
+
+//ADD ONs:
+    //background images
+    //loss modal with system failure image + reset prompt/button
+    //digital rain wallpaper
+    //timer
+    //reset button
+    //(brain/health/damage counter)
+    //add darkening overlay onto matched cards
+
+
 //===============================
 // STORE CARDS & PUSH INTO ARRAY
 //===============================
@@ -72,9 +89,8 @@ let cardsFlipped = [];
   //function initiates on click
   //function allows only one click per card (no returning card to initial state)
 
-  $('.card').one('click', (e) => {
+  $('.card').one('click', function (e) {
     let $target = $(e.currentTarget);
-    // console.log($target);
     let $img;
     let $parent = $target.parent().parent();
     if($target.is('img')) {
@@ -124,16 +140,17 @@ const noMatch = () => {
   window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
   //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
 
+  window.setTimeout(function() {cardsFlipped = [] }, 1300);
+
 //ISSUE - CAN'T RESUME .ONE CLICK ON PREVIOUSLY FLIPPED cards
   //EXPLORE PREVIOUS OBJECT...
-  // window.setTimeout(function() {cardsFlipped[0].one('click') }, 1400);
-  // window.setTimeout(function() {cardsFlipped[1].one('click') }, 1420);
+  // window.setTimeout(function() {cardsFlipped[0].one('click', function ('rotated')) }, 1420);
+  // window.setTimeout(function() {cardsFlipped[1].one('click', toggleClass('rotated')) }, 1430);
 
-  window.setTimeout(function() {cardsFlipped = [] }, 1500);
   //run .one('click') on all cards in array or [0]/[1]
-
 }
 });
+
  //==============================
 //      CHECK FOR A MATCH
 //==============================

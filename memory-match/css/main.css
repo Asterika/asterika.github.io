@@ -101,7 +101,7 @@ h1 {
 
 .card > .back {
   backface-visibility: hidden;
-  background-image: url('images/000.jpg');
+  background-image: url('images/000.jpg'), url('images/001.jpg'), url('images/010.jpg'), url('images/011.jpg'), url('images/100.jpg'), url('images/101.jpg'), url('images/110'), url('images/111.jpg');
   height: 165px;
   position: absolute;
   transform: perspective(600px) rotateY(180deg);
@@ -130,8 +130,30 @@ h1 {
   transform: perspective(600px) rotateY(0deg);
 }
 
-.background {
+@keyframes matchAnimation {
+  0%  {
+    background: black;
+  }
+  100% {
+    background-image: url('images/000.jpg');
+  }
+}
+/* .overlay {
   background-color: black;
+} */
+
+/* .background {
+  background-color: black;
+}
+
+.flipped {
+  border: 3px solid lime;
+} */
+
+.match {
+  border: 2px solid red;
+  animation: 1s matchAnimation ease-in-out;
+  animation-delay: .4s;
 }
 
 /* .darken {

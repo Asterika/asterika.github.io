@@ -3,9 +3,9 @@ $(() => {
 //  STORE CARDS & PUSH INTO ARRAY
 //================================
 
-const generateGrid () {
-  
-}
+// const generateGrid () {
+//
+// }
 
 //create an array to store all back image possibilities
 const cards = [

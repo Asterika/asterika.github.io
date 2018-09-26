@@ -1,6 +1,10 @@
 $(() => {
 //
-// ISSUES AS OF T, 9/25:
+// ISSUES AS OF W, 9/26:
+//
+//     After attempting to add counter,
+//     cards are now considered all matching once a match is made
+//
 //     Randomize card placement in section/grid
 //
 //     Re-assign .one(click) to previously flipped cards so they can be flipped again
@@ -139,6 +143,8 @@ let moves = 0;
   //this removes cards from play and stores them for win state
 const matchedCards = [];
 
+// const match = () => {
+
  //==============================
 //     CHECK PAIR FOR A MATCH
 //===============================
@@ -147,16 +153,18 @@ const matchedCards = [];
 const checkPair = () => {
     //check that two cards have been flipped
       //LATER: disable all other card flips until match has been determined/animation resolved
+      console.log('hi');
     if(cardsFlipped.length === 2) {
       //count moves
       moves++;
       //check if two cards match, using 'value' of the image
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
         //if cards match, run match() function
-        // match();
+        match();
         //push matched cards into an array to store for win state
         matchedCards.push(cardsFlipped[0]);
         matchedCards.push(cardsFlipped[1]);
+        cardsFlipped = [];
         //check to see if all cards have been placed into the array of matched cards
         checkForWin();
 //remove event addEventListener -- no need to remove, since .one click is there
@@ -190,13 +198,17 @@ const checkPair = () => {
 
 //create a function that runs when a match is detected
 const match = () => {
-  //
+  const card1 = cardsFlipped[0];
+  const card2 = cardsFlipped[1];
+
+  //add off.click
+  
   // console.log(cardsFlipped);
   // console.log(cardsFlipped[0]);
   window.setTimeout(function() {
-    cardsFlipped[0].parent().parent().addClass('match').off('click');
-    cardsFlipped[1].parent().parent().addClass('match').off('click');
-    cardsFlipped = [];
+    card1.parent().parent().addClass('match');
+    card2.parent().parent().addClass('match');
+    // cardsFlipped = [];
   }, 1100);
   // (cardsFlipped[0]).parent().parent().off('click');
   // (cardsFlipped[1]).parent().parent().off('click');

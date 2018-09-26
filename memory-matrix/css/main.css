@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
+/* background image attribution:
+https://pixabay.com/en/matrix-code-computer-pc-data-356024/ */
+
 /* * {
   border: 3px solid lime;
 } */
@@ -10,7 +13,6 @@
 
 body {
   background-image: url("../images/matrixback.jpeg");
-  /* background-color: #002145; */
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
@@ -84,7 +86,8 @@ h1 {
 
 .card > .front {
   backface-visibility: hidden;
-  background-image: url('images/apple.jpg');
+/* step 1: attempt to make image display with class 'front', attempted multiple image references - DOES NOT WORK  */
+  /* background-image: url('images/apple.jpg'); */
   height: 165px;
   position: absolute;
   transform: perspective(600px;) rotateY(0deg);

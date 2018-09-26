@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+/* background image attribution:
+https://pixabay.com/en/matrix-code-computer-pc-data-356024/ */
+
+body {
+  /* background-image: url("../images/matrixback.jpeg"), black; */
+  /* background-position: center;
+  background-size: cover; */
+  color: lime;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.card {
+  background-position: center;
+  border: 1px solid lime;
+  height: 165px;
+  margin: 10px;
+  position: relative;
+  width: 165px;
+}
+
+.back {
+  /* backface-visibility: hidden;
+  background-image: url('images/000.jpg'), url('images/001.jpg'), url('images/010.jpg'), url('images/011.jpg'), url('images/100.jpg'), url('images/101.jpg'), url('images/110.jpg'), url('images/111.jpg'); */
+  /* height: 165px;
+  position: absolute;
+  transform: perspective(600px) rotateY(180deg);
+  transition: transform 1s linear 0s;
+  width: 165px; */
+}
+
+.front {
+  /* backface-visibility: hidden; */
+  /* step 1: attempted to use background-image property of class 'front' to assign image to front of card - DOES NOT WORK */
+  /* background-image: url('../images/apple.jpg'); */
+  /* height: 165px; */
+  /* position: absolute; */
+  transform: perspective(600px;) rotateY(0deg);
+  transition: transform 1s linear 0s;
+  /* width: 165px; */
+}
+
+.card.rotated > .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.card.rotated > .back {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.grid {
+  align-content: space-around;
+  display: flex;
+  flex-flow: row wrap;
+  height: 750px;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 4px 20px 4px 22px;
+  width: 750px;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 5px 5px 5px black;
+}

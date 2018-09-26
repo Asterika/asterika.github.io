@@ -1,19 +1,27 @@
 $(() => {
+//
+// ISSUES AS OF T, 9/25:
+//     Randomize card placement in section/grid
+//
+//     Re-assign .one(click) to previously flipped cards so they can be flipped again
+//         update: changed one click to on click
+//         NOW NEED TO STOP CLICKS AFTER MATCH:
+//         WORKS FOR FIRST CARD, not second:
+//           $('.card').off('click');
+//
+//     Ensure only two cards can be clicked at a time:
+//       * setTimeout on noMatch() ???
+//       * create a function for on click -- include in checkPair?
+//
+//     Create reset function
 
-ISSUES AS OF T, 9/25:
-    Randomize card placement in section/grid
+// setTimeout(function(){
+//     openedCards[0].classList.remove("show", "open", "no-event","unmatched");
+//     openedCards[1].classList.remove("show", "open", "no-event","unmatched");
+//     enable();
+//     openedCards = [];
+// },1100);
 
-    Re-assign .one(click) to previously flipped cards so they can be flipped again
-        update: changed one click to on click
-        NOW NEED TO STOP CLICKS AFTER MATCH:
-        WORKS FOR FIRST CARD, not second:
-          $('.card').off('click');
-
-    Ensure only two cards can be clicked at a time:
-      * setTimeout on noMatch() ???
-      * create a function for on click -- include in checkPair?
-      
-    Code loss state
 
 //ADD ONs:
     //background images
@@ -71,6 +79,9 @@ const cards = [
     //FOR NOW, simply add a copy of each card to test randomization
  //create an array to store flipped cards (to check for match)
 let cardsFlipped = [];
+
+let moves = 0;
+
 //  //for testing, create a variable to represent object1 in the cards array
 // let cardOne = (cards[0]);
 //  //push first card into cardsFlipped array:
@@ -125,122 +136,151 @@ let cardsFlipped = [];
   //
   // }
 
+// create an array to store matched cards
+  //this removes cards from play and stores them for win state
 const matchedCards = [];
 
+ //==============================
+//     CHECK PAIR FOR A MATCH
+//===============================
+
+// create a function to check whether a pair cards is matched
 const checkPair = () => {
-    //check that 2 cards, and only 2 cards, have been flipped
+    //check that two cards have been flipped
+      //LATER: disable all other card flips until match has been determined/animation resolved
     if(cardsFlipped.length === 2) {
-      //check for a match
-      // console.log(cardsFlipped[0].attr('value'));
-      // console.log(cardsFlipped[1].attr('value'));
+      //check if two cards match, using 'value' of the image
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
-        // console.log(cardsFlipped);
-        match();
-        // offClick();
+        //if cards match, run match() function
+        // match();
+        //push matched cards into an array to store for win state
         matchedCards.push(cardsFlipped[0]);
         matchedCards.push(cardsFlipped[1]);
-
+        //check to see if all cards have been placed into the array of matched cards
         checkForWin();
-        //remove event addEventListener -- no need to remove, since .one click is there
-        // cardsFlipped[0]
+//remove event addEventListener -- no need to remove, since .one click is there
+//NOW NEED TO REMOVE, SINCE ON CLICK?
+        //add move to TURN
+        moves++;
+        console.log(moves);
+        //empty the cardsFlipped array as a way to "refresh"
         cardsFlipped = [];
-
+      //create an 'else' statement containing a function for unmatched cards
       } else {
+        moves++;
+        console.log(moves);
         noMatch();
       }
     }
 }
 
+//===============================
+//            MATCH
+//===============================
 
+//create a function that runs when a match is detected
 const match = () => {
+  //
+  // console.log(cardsFlipped);
+  // console.log(cardsFlipped[0]);
+  // window.setTimeout(function() {cardsFlipped[0].parent().parent().addClass('match')}, 1200);
+  // window.setTimeout(function() {cardsFlipped[1].parent().parent().addClass('match')}, 1200);
 
-  // window.setTimeout(function() {cardsFlipped[0].parent().parent().addClass('match') }, 1200);
-  // window.setTimeout(function() {cardsFlipped[1].parent().parent().addClass('match') }, 1200);
-  (cardsFlipped[0]).parent().parent().addClass('match');
-  (cardsFlipped[1]).parent().parent().addClass('match');
+  // (cardsFlipped[0]).parent().parent().off('click');
+  // (cardsFlipped[1]).parent().parent().off('click');
 
+}
+  //once two cards are matched....
+//   (cardsFlipped[0]).parent().parent().addClass('match');
+//   (cardsFlipped[1]).parent().parent().addClass('match');
+// }
+//
 // const offClick = () => {
 //   window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
+//
 //   window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
-//WORKS FOR FIRST CARD!!!!!
-  // $('.card').off('click');
+// WORKS FOR FIRST CARD!!!!!
+//   $('.card').off('click');
 // }
-
+//
 // const offClick = () => {
 //
 // }
-
+//
 // WORKS FOR FIRST CARD
 //   window.setTimeout(function() {cardsFlipped[0].parent().off('click') }, 1200);
 //   window.setTimeout(function() {cardsFlipped[1].parent().off('click') }, 1200);
+//
+//   window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
+//   window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
+//   $(cardsFlipped[0]).parent().parent().addClass('match').off('click');
+//   $(cardsFlipped[1]).parent().parent().addClass('match').off('click'));
 
-  // window.setTimeout(function() {cardsFlipped[0].parent().parent().off('click') }, 1200);
-  // window.setTimeout(function() {cardsFlipped[1].parent().parent().off('click') }, 1200);
-  // $(cardsFlipped[0]).parent().parent().addClass('match').off('click');
-  // $(cardsFlipped[1]).parent().parent().addClass('match').off('click'));
-}
+//===============================
+//           NO MATCH
+//===============================
 
+//create a function that runs once cards are declared a mismatch
 const noMatch = () => {
-  //STILL NEED:
-    //RE-INITIATE oneclick on flipped cards run .one on each of cards in array or [0]/[1]
-      //resolved with onclick
-    //flip cards
-    //empty array
-
+  //use setTimeout for both unmatched cards to ensure that cards return to original state at the same time
+      //IF TIME: add shake/vibrate animation to cards btwn removeClass and 1200ms
   window.setTimeout(function() {cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
-  //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
-
   window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
-  //IF TIME: shake/vibrate cards btwn removeClass and 1200ms
 
-  // window.setTimeout(function() {cardsFlipped[0].$('.card').on('click', ) }, 1250);
-  // window.setTimeout(function() {cardsFlipped[1].$('.card').on('click') }, 1250);
-
+  //use setTimeout to empty the array cards are drawn from after cards have returned to initial state
   window.setTimeout(function() {cardsFlipped = [] }, 1300);
-
-//ISSUE - CAN'T RESUME .ONE CLICK ON PREVIOUSLY FLIPPED cards
-  //EXPLORE PREVIOUS OBJECT...
-  // window.setTimeout(function() {cardsFlipped[0].one('click', function ('rotated')) }, 1420);
-  // window.setTimeout(function() {cardsFlipped[1].one('click', toggleClass('rotated')) }, 1430);
-
-  //run .one('click') on all cards in array or [0]/[1]
 }
-
-
- //==============================
-//      CHECK FOR A MATCH
-//==============================
-
-//===============================
-//        MATCH & NOMATCH
-//===============================
 
 //===============================
 //       WIN & LOSS STATES
 //===============================
 
-//create winState function
-const checkForWin = () => {
-  //if all cards matched
-    if (matchedCards.length === 16) {
-      // console.log(cardsFlipped)
-    console.log('Winner winner chicken dinner!');
-  } else {
-    //do nothing
-  }
+//create reset function
+const reset = () => {
+  location.reload();
 }
-  //win alert/prompt
 
-  //option to reset
-
-// checkForWin();
+//create win state function
+  //use an if/else statement to check if all cards have been matched
+const checkForWin = () => {
+    //if the length of the array of stored matched cards = number of cards
+    if (matchedCards.length === 16 && moves <= 24) {
+      //then all cards have been matched
+      //create a win/winState function that runs once a win is determined
+     console.log('Winner winner chicken dinner!');
+    //if all cards have not yet been matched, do nothing
+  } else {
+    console.log('LOOSAH!');
+  }
+    // reset();
+}
 
 });
 
-  // if all cards have been flipped and matched
-  //   prompt -- play again? / reset game?
-  //   congratulations modal
-  //   digital rain
+// //create a function to count player's moves
+// const countMoves = () => {
+//   //increment moves by 1 each turn
+//   moves++;
+//     //if player matches all cards within 12 moves
+//     if (matchedCards.length === 16 && moves <= 12) {
+//       console.log('congratulations!');
+//     } else {
+//       console.log('LOOSAH!');
+//     }
+//
+// }
+
+
+//WIN STATE FUNCTION
+    //congratulations modal???
+    //digital rain backgroundImage
+    //prompt / reset button -- play again?
+      //red pill/blue pill?
+
+//LOSS STATE FUNCTION
+    //if all cards are not matched by timer --> loss
+
+
 
 //create lossState function
 

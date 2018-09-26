@@ -15,12 +15,6 @@ $(() => {
 //
 //     Create reset function
 
-// setTimeout(function(){
-//     openedCards[0].classList.remove("show", "open", "no-event","unmatched");
-//     openedCards[1].classList.remove("show", "open", "no-event","unmatched");
-//     enable();
-//     openedCards = [];
-// },1100);
 
 
 //ADD ONs:
@@ -79,6 +73,11 @@ const cards = [
     //FOR NOW, simply add a copy of each card to test randomization
  //create an array to store flipped cards (to check for match)
 let cardsFlipped = [];
+
+// let countMoves() {
+//   moves++;
+//   counter.innerHTML = moves;
+// }
 
 let moves = 0;
 
@@ -149,6 +148,8 @@ const checkPair = () => {
     //check that two cards have been flipped
       //LATER: disable all other card flips until match has been determined/animation resolved
     if(cardsFlipped.length === 2) {
+      //count moves
+      moves++;
       //check if two cards match, using 'value' of the image
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
         //if cards match, run match() function
@@ -161,18 +162,27 @@ const checkPair = () => {
 //remove event addEventListener -- no need to remove, since .one click is there
 //NOW NEED TO REMOVE, SINCE ON CLICK?
         //add move to TURN
-        moves++;
         console.log(moves);
         //empty the cardsFlipped array as a way to "refresh"
-        cardsFlipped = [];
+        // cardsFlipped = [];
       //create an 'else' statement containing a function for unmatched cards
       } else {
-        moves++;
         console.log(moves);
         noMatch();
+        // moves++;
+        // cardsFlipped = [];
       }
     }
 }
+
+
+
+// setTimeout(function(){
+//     openedCards[0].classList.remove("show", "open", "no-event","unmatched");
+//     openedCards[1].classList.remove("show", "open", "no-event","unmatched");
+//     enable();
+//     openedCards = [];
+// },1100);
 
 //===============================
 //            MATCH
@@ -183,9 +193,11 @@ const match = () => {
   //
   // console.log(cardsFlipped);
   // console.log(cardsFlipped[0]);
-  // window.setTimeout(function() {cardsFlipped[0].parent().parent().addClass('match')}, 1200);
-  // window.setTimeout(function() {cardsFlipped[1].parent().parent().addClass('match')}, 1200);
-
+  window.setTimeout(function() {
+    cardsFlipped[0].parent().parent().addClass('match').off('click');
+    cardsFlipped[1].parent().parent().addClass('match').off('click');
+    cardsFlipped = [];
+  }, 1100);
   // (cardsFlipped[0]).parent().parent().off('click');
   // (cardsFlipped[1]).parent().parent().off('click');
 
@@ -224,11 +236,13 @@ const match = () => {
 const noMatch = () => {
   //use setTimeout for both unmatched cards to ensure that cards return to original state at the same time
       //IF TIME: add shake/vibrate animation to cards btwn removeClass and 1200ms
-  window.setTimeout(function() {cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
-  window.setTimeout(function() {cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
+  window.setTimeout(function() {
+    cardsFlipped[0].parent().parent().removeClass('rotated');
+    cardsFlipped[1].parent().parent().removeClass('rotated');
+  }, 1200);
 
   //use setTimeout to empty the array cards are drawn from after cards have returned to initial state
-  window.setTimeout(function() {cardsFlipped = [] }, 1300);
+  window.setTimeout(function() { cardsFlipped = [] }, 1300);
 }
 
 //===============================
@@ -236,9 +250,9 @@ const noMatch = () => {
 //===============================
 
 //create reset function
-const reset = () => {
-  location.reload();
-}
+// const reset = () => {
+//   location.reload();
+// }
 
 //create win state function
   //use an if/else statement to check if all cards have been matched
@@ -249,8 +263,10 @@ const checkForWin = () => {
       //create a win/winState function that runs once a win is determined
      console.log('Winner winner chicken dinner!');
     //if all cards have not yet been matched, do nothing
-  } else {
+  } else if (moves === 25) {
     console.log('LOOSAH!');
+  } else {
+    //do nothing
   }
     // reset();
 }

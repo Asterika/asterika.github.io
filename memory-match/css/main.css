@@ -1,21 +1,28 @@
-* {
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+/* * {
   border: 3px solid lime;
-}
+} */
 
 /* ----------------------------------- */
 /* -------- General Properties ------- */
 /* ----------------------------------- */
 
 body {
+  background-image: url("../images/matrixback.jpeg");
   /* background-color: #002145; */
-  background: url('images/matrixbackground.jpeg') black;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: lime;
-  font-family: Courier;
+  font-family: 'Orbitron', sans-serif;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 44px;
+  font-weight: bold;
   text-align: center;
+  text-shadow: 5px 5px 5px black;
 }
 
 /* ------------------------------------- */
@@ -46,7 +53,7 @@ h1 {
 
 .card {
   align-self: center;
-  border: 2px solid lime;
+  border: 1px solid lime;
   height: 165px;
   position: relative;
   /* transform-style: preserve-3d; */
@@ -152,7 +159,7 @@ h1 {
 } */
 
 .match {
-  border: 2px solid blue;  
+  border: 2px solid blue;
   animation: 1s matchAnimation ease-in-out;
   animation-delay: .4s;
 }

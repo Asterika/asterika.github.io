@@ -170,7 +170,7 @@ const checkPair = () => {
       //check if two cards match, using 'value' of the image
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
         //if cards match, run match() function
-        moves++;
+        // moves++;
         match();
         console.log(moves);
         //push matched cards into an array to store for win state
@@ -188,7 +188,7 @@ const checkPair = () => {
       //create an 'else' statement containing a function for unmatched cards
       } else {
         noMatch();
-        moves++;
+        // moves++;
         console.log(moves);
         // cardsFlipped = [];
       }
@@ -259,13 +259,17 @@ const match = () => {
 
 //create a function that runs once cards are declared a mismatch
 const noMatch = () => {
-  //use setTimeout for both unmatched cards to ensure that cards return to original state at the same time
+  const card1 = cardsFlipped[0];
+  const card2 = cardsFlipped[1];
+
+  setTimeout(noMatch, 1200);
+  // use setTimeout for both unmatched cards to ensure that cards return to original state at the same time
       //IF TIME: add shake/vibrate animation to cards btwn removeClass and 1200ms
   window.setTimeout(function() {
-    cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
+    card1.parent().parent().removeClass('rotated') }, 1200);
 
   window.setTimeout(function() {
-    cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
+    card2.parent().parent().removeClass('rotated') }, 1200);
 
   //use setTimeout to empty the array cards are drawn from after cards have returned to initial state
   window.setTimeout(function() { cardsFlipped = [] }, 1400);
@@ -284,13 +288,13 @@ const noMatch = () => {
   //use an if/else statement to check if all cards have been matched
 const checkForWin = () => {
     //if the length of the array of stored matched cards = number of cards
-    if (matchedCards.length === 16 && moves <= 16) {
+    if (matchedCards.length === 16 && moves <= 20) {
       //then all cards have been matched
       //create a win/winState function that runs once a win is determined
      console.log('Winner winner chicken dinner!');
      //modalWin();
     //if all cards have not yet been matched, do nothing
-  } else if (moves > 16) {
+  } else if (moves > 8) {
     console.log('LOOSAH!');
     openModalLoss();
     //modalLoss();

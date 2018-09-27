@@ -144,7 +144,7 @@ const startGame = () => {
       //       moves++;
       //     * append playerOne moves++ to scoreboard?
       // }
-    }
+
 
   // const readyPlayerOne = () => {
   //   let score = 0;

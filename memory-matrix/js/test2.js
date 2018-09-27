@@ -1,4 +1,4 @@
-
+$(() => {
 //
 // ISSUES AS OF W, 9/26:
 //
@@ -19,8 +19,6 @@
 //
 //     Create reset function
 
-
-
 //ADD ONs:
     //background images
     //loss modal with system failure image + reset prompt/button
@@ -32,6 +30,8 @@
 
     //Grabbing modal element
     const $modal = $('#modal');
+    const $redPill = $('button.red-pill');
+    const $bluePill = $('button.blue-pill');
 
     const openModalLoss = () => {
       $modal.css('display','block');
@@ -39,6 +39,16 @@
       // alternate method: $modal.show();
     }
 
+    const openModalWin = () => {
+      $modal.css('display', 'block');
+    }
+
+    // $redPill.on('click', location.reload);
+    // $bluePill.on('click', function());
+
+    // $('openModalWin').show().on('shown', function() {
+    //     $('openModalWin').modal('hide')
+    // });
 
 //===============================
 // STORE CARDS & PUSH INTO ARRAY
@@ -143,7 +153,7 @@ let moves = 0;
     }
     $target.toggleClass('rotated');
     checkPair();
-  }
+  });
 
   // let addOneClick = () => {
   //
@@ -151,7 +161,7 @@ let moves = 0;
 
 // create an array to store matched cards
   //this removes cards from play and stores them for win state
-let matchedCards = [];
+const matchedCards = [];
 
 // const match = () => {
 
@@ -164,19 +174,18 @@ const checkPair = () => {
     //check that two cards have been flipped
       //LATER: disable all other card flips until match has been determined/animation resolved
       // console.log('hi');
-    if (cardsFlipped.length === 2) {
+    if(cardsFlipped.length === 2) {
       //count moves
       moves++;
       //check if two cards match, using 'value' of the image
       if(cardsFlipped[0].attr('value') === cardsFlipped[1].attr('value')) {
-        // console.log(cardsFlipped[0]);
         //if cards match, run match() function
         // moves++;
         match();
-        // console.log(moves);
+        console.log(moves);
         //push matched cards into an array to store for win state
-        // matchedCards.push(cardsFlipped[0]);
-        // matchedCards.push(cardsFlipped[1]);
+        matchedCards.push(cardsFlipped[0]);
+        matchedCards.push(cardsFlipped[1]);
         cardsFlipped = [];
         //check to see if all cards have been placed into the array of matched cards
         checkForWin();
@@ -190,7 +199,7 @@ const checkPair = () => {
       } else {
         noMatch();
         // moves++;
-        // console.log(moves);
+        console.log(moves);
         // cardsFlipped = [];
       }
     }
@@ -211,13 +220,11 @@ const checkPair = () => {
 
 //create a function that runs when a match is detected
 const match = () => {
-  // const card1 = cardsFlipped[0];
-  // const card2 = cardsFlipped[1];
+  const card1 = cardsFlipped[0];
+  const card2 = cardsFlipped[1];
 
-  matchedCards.push(cardsFlipped[0]);
-  matchedCards.push(cardsFlipped[1]);
   //add off.click
-}
+
   // console.log(cardsFlipped);
   // console.log(cardsFlipped[0]);
 // window.setTimeout(function() {
@@ -229,6 +236,7 @@ const match = () => {
 // // (cardsFlipped[1]).parent().parent().off('click');
 // // }
 // }
+}
   //once two cards are matched....
 //   (cardsFlipped[0]).parent().parent().addClass('match');
 //   (cardsFlipped[1]).parent().parent().addClass('match');
@@ -261,21 +269,20 @@ const match = () => {
 
 //create a function that runs once cards are declared a mismatch
 const noMatch = () => {
-  // const card1 = cardsFlipped[0];
-  // const card2 = cardsFlipped[1];
+  const card1 = cardsFlipped[0];
+  const card2 = cardsFlipped[1];
 
   // setTimeout(noMatch, 1200);
   // use setTimeout for both unmatched cards to ensure that cards return to original state at the same time
       //IF TIME: add shake/vibrate animation to cards btwn removeClass and 1200ms
   window.setTimeout(function() {
-    cardsFlipped[0].parent().parent().removeClass('rotated') }, 1200);
-    console.log(cardsFlipped[0]);
-  window.setTimeout(function() {
-    cardsFlipped[1].parent().parent().removeClass('rotated') }, 1200);
-  //use setTimeout to empty the array cards are drawn from after cards have returned to initial state
-  window.setTimeout(function() {
-    cardsFlipped = [] }, 1800);
+    card1.parent().parent().removeClass('rotated') }, 1200);
 
+  window.setTimeout(function() {
+    card2.parent().parent().removeClass('rotated') }, 1200);
+
+  //use setTimeout to empty the array cards are drawn from after cards have returned to initial state
+  window.setTimeout(function() { cardsFlipped = [] }, 1400);
 }
 
 //===============================
@@ -291,20 +298,20 @@ const noMatch = () => {
   //use an if/else statement to check if all cards have been matched
 const checkForWin = () => {
     //if the length of the array of stored matched cards = number of cards
-    if (matchedCards.length === 16 && moves <= 20) {
+    if (matchedCards.length === 16 && moves >= 8 && moves < 18) {
       //then all cards have been matched
       //create a win/winState function that runs once a win is determined
      console.log('Winner winner chicken dinner!');
+     openModalWin();
      //modalWin();
     //if all cards have not yet been matched, do nothing
-  } else if (moves > 8) {
+  } else if (moves >= 18) {
     console.log('LOOSAH!');
     openModalLoss();
-  }
     //modalLoss();
-  // } else {
-  //   //do nothing
-  // }
+  } else {
+    //do nothing
+  }
     // reset();
 }
 
@@ -323,6 +330,9 @@ checkForWin();
 // }
 // //build in time so modal does not appear immediately
 // setTimeout(modalLoss, 2000);
+
+
+});
 
 // //create a function to count player's moves
 // const countMoves = () => {

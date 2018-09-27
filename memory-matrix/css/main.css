@@ -187,8 +187,7 @@ h1 {
   z-index: 1;
 }
 
-#modal-textbox {
-  /* background-color: white; */
+.loss {
   background-image: url('../images/matrix-systemfailure.jpeg');
   border: 1px solid lime;
   border-radius: 2px;
@@ -203,6 +202,82 @@ h1 {
   /* top: 50%; */
   width: 1110px;
 }
+
+.red-pill, .blue-pill {
+  border-radius: 60px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  height: 100px;
+  margin-top: 300px;
+  margin-left: 180px;
+  position: relative;
+  text-shadow: 4px 4px black;
+  width: 200px;
+}
+
+
+.red-pill {
+  background-color: red;
+  margin-left: 180px;
+}
+
+.blue-pill {
+  background-color: dodgerblue;
+  margin-left: 350px;
+}
+
+.win {
+  background-image: url('../images/matrix-ordered.jpeg');
+  border: 1px solid lime;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  height: 522px;
+  justify-content: center;
+  margin: 50px auto;
+  /* object-fit: fill; */
+  /* left: 50%; */
+  padding: 2%;
+  /* position: absolute; */
+  /* top: 50%; */
+  width: 700px;
+}
+
+/* #modal-textbox-loss {
+  /* background-color: white; */
+  /* background-color: rgba(0,0,0,0.5);  */
+  /* background-image: url('../images/matrix-systemfailure.jpeg');
+  border: 1px solid lime;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  height: 660px;
+  justify-content: center;
+  margin: 50px auto;
+  object-fit: fill;
+  /* left: 50%; */
+  /* padding: 2%; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* width: 1110px;
+} */
+
+/* #modal-textbox-win {
+  background-image: url('../images/matrix-ordered.jpeg');
+  border: 1px solid lime;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  height: 522px;
+  justify-content: center;
+  margin: 50px auto;
+  /* object-fit: fill; */
+  /* left: 50%; */
+  /* padding: 2%; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* width: 700px;
+} */
 
 /* .darken {
   background-image:

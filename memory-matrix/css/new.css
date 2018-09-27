@@ -66,3 +66,24 @@ h1 {
   text-align: center;
   text-shadow: 5px 5px 5px black;
 }
+
+#modal {
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#modal-textbox {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  height: 350px;
+  margin: 150px auto;
+  width: 550px;
+}

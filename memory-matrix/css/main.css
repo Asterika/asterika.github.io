@@ -3,9 +3,6 @@
 /* background image attribution:
 https://pixabay.com/en/matrix-code-computer-pc-data-356024/ */
 
-/* * {
-  border: 3px solid lime;
-} */
 
 /* ----------------------------------- */
 /* -------- General Properties ------- */
@@ -70,10 +67,6 @@ h1 {
   width: 165px;
 }
 
-/* not sure about this one -- this set a column */
-/* #card.wrapper {
-  perspective: 800px;
-} */
 
 /* #card.flipped {
   /* backface-visibility: hidden; */
@@ -93,28 +86,13 @@ h1 {
 
 .card > .front {
   backface-visibility: hidden;
-/* step 1: attempt to make image display with class 'front', attempted multiple image references - DOES NOT WORK  */
-  /* background-image: url('images/apple.jpg'); */
+/* step 1: attempt to make image display with class 'front', attempted multiple image references - DOES NOT WORK for code attempt generating grid with for loop */
+  background-image: url('images/apple.jpg');
   height: 165px;
   position: absolute;
   transform: perspective(600px;) rotateY(0deg);
   transition: transform .5s linear 0s;
   width: 165px;
-
-
-  /* z-index: 2; */
-  /* z-index: 0; */
-  /* border: 2px solid lime;
-  height: 165px;
-  width: 165px; */
-  /* transform: rotateY(180deg); */
-  /* z-index: 2;
-  background-size: 100% 100%;
-  transform: rotateY(0deg); */
-  /* display: inline-block; */
-  /* background-image: url('images/apple.jpg'); */
-  /* background-size: cover;
-  z-index: 1; */
 }
 
 .card > .back {
@@ -125,19 +103,6 @@ h1 {
   transform: perspective(600px) rotateY(180deg);
   transition: transform .5s linear 0s;
   width: 165px;
-  /* align-self: center; */
-  /* backface-visibility: visible; */
-  /* background-image: url('images/000.jpg');
-  background-size: cover;
-  height: 165px;
-  position: absolute;
-  transform: rotateY(-180deg);
-  width: 165px; */
-  /* z-index: 1; */
-  /* z-index: -1; */
-  /* border: 2px solid lime;
-  height: 165px;
-  width: 165px; */
 }
 
 .card.rotated > .front {
@@ -147,26 +112,6 @@ h1 {
 .card.rotated > .back {
   transform: perspective(600px) rotateY(0deg);
 }
-
-@keyframes matchAnimation {
-  0%  {
-    background: black;
-  }
-  100% {
-    background-image: url('images/000.jpg'), url('images/001.jpg'), url('images/010.jpg'), url('images/011.jpg'), url('images/100.jpg'), url('images/101.jpg'), url('images/110.jpg'), url('images/111.jpg');
-  }
-}
-/* .overlay {
-  background-color: black;
-} */
-
-/* .background {
-  background-color: black;
-}
-
-.flipped {
-  border: 3px solid lime;
-} */
 
 .match {
   border: 2px solid blue;
@@ -278,25 +223,6 @@ button:focus {outline:0};
   width: 700px;
 }
 
-/* .darken {
-  background-image:
-  linear-gradient(
-    rgba(0,0,0,0.5),
-    rgba(0,0,0,0.5)
-    ),
-    url(images/000.jpg);
-} */
-
-/* .animation {
-  animation-name: fade-to-black;
-  animation-duration: .5s;
-}
-
-@keyframes fade-to-black {
-  100% {background: '.card.back'}
-  0% {background: black};
-} */
-
 /*-------------------------------------*/
 /*-------- Card-Button Classes --------*/
 /*-------------------------------------*/
@@ -324,4 +250,44 @@ button:focus {outline:0};
 
 /* .transform {
   transform: rotateY(180deg);
+} */
+
+/* DOES NOT WORK!!!
+@keyframes matchAnimation {
+  0%  {
+    background: black;
+  }
+  100% {
+    background-image: url('images/000.jpg'), url('images/001.jpg'), url('images/010.jpg'), url('images/011.jpg'), url('images/100.jpg'), url('images/101.jpg'), url('images/110.jpg'), url('images/111.jpg');
+  }
+} */
+/* .overlay {
+  background-color: black;
+} */
+
+/* .background {
+  background-color: black;
+}
+
+.flipped {
+  border: 3px solid lime;
+} */
+
+/* .darken {
+  background-image:
+  linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+    ),
+    url(images/000.jpg);
+} */
+
+/* .animation {
+  animation-name: fade-to-black;
+  animation-duration: .5s;
+}
+
+@keyframes fade-to-black {
+  100% {background: '.card.back'}
+  0% {background: black};
 } */

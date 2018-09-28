@@ -1,3 +1,4 @@
+
 $(() => {
 //
 // ISSUES AS OF W, 9/26:
@@ -50,39 +51,41 @@ $(() => {
     //reset button
     //(brain/health/damage counter)
     //add darkening overlay onto matched cards
-let playerOne;
-let playerTwo;
+// let playerOne;
+// let playerTwo;
 
 let cardsFlipped = [];
 let matchedCards = [];
 
-
-  const turn = true;
-
-// const determinePlayer = () => {
-//
+// const scoreboard = () => {
+//   // $('#scoreboardOne').html('Moves: ' + cardsFlipped.length);
+//   // $('#scoreboardTwo').html('Moves: ' + cardsFlipped.length);
 // }
 
+let playerOne = true;
+
+// const switchPlayer = () => {
+//   if (playerOne === true) {
+//   startGame();
+//   clickCard();
+//   checkForWin();
+// } else if (playerOne === false) {
+//   startGame();
+//   clickCard();
+//   checkForWin();
+// }
+// }
+let moves = 0;
 
 const startGame = () => {
   //zero-out last player's score, set new player's moves to 0
-  closeModal();
   $('.rotated').removeClass('rotated');
   cardsFlipped = [];
   matchedCards = [];
-  let moves = 0;
-  scoreboard();
+  moves = 0;
+  // moves = 0;
+  // scoreboard();
   //need to unflip cardsFlipped
-}
-
-const scoreboard = () => {
-  // $('#scoreboardOne').html('Moves: ' + cardsFlipped.length);
-  // $('#scoreboardTwo').html('Moves: ' + cardsFlipped.length);
-  if (turn === true) {
-    $('#scoreboardOne').html('Moves: ' + cardsFlipped.length);
-  } else if (turn === false) {
-    $('#scoreboardTwo').html('Moves: ' + cardsFlipped.length);
-  }
 }
   //create a for loop to count moves?
   // for (let i = 0; i < moves.length; i++) {
@@ -91,7 +94,7 @@ const scoreboard = () => {
 
 
   const closeModal = () => {
-    openModalLoss().hide();
+    openModalLoss.hide();
   }
 
     //Grabbing modal element
@@ -107,6 +110,8 @@ const scoreboard = () => {
     $('#modal').hide('slow');
     startGame();
   })
+
+  //
 
     const openModalLoss = () => {
       $modal.css('display','block');
@@ -133,12 +138,12 @@ const scoreboard = () => {
     //     $('openModalWin').modal('hide')
     // });
 
+  // const currentTurn = true;
 
-//
-//
+
 // const currentPlayer = ['playerOne', 'playerTwo'];
-//
-//     // create player 1 and player 2 options
+
+    // create player 1 and player 2 options
     // const switchPlayer = () => {
     //   if (currentTurn === true) {
     //   //condition true = player 1
@@ -217,7 +222,8 @@ const cards = [
 //   moves++;
 //   counter.innerHTML = moves;
 // }
-let moves = 0;
+
+// let moves = 0;
 
 //  //for testing, create a variable to represent object1 in the cards array
 // let cardOne = (cards[0]);
@@ -257,21 +263,39 @@ let moves = 0;
 // const onClick = () => {
 //
 // }
-let clickCard = (e) => {
-  let $target = $(e.currentTarget);
-  let $img;
-  // console.log($img);
-  let $parent = $target.parent().parent();
-  if($target.is('img')) {
-    $img = $target;
-    cardsFlipped.push($img);
+
+
+let clickCard = (event) => {
+  if (playerOne === true) {
+    let $target = $(event.currentTarget);
+    let $img;
+    // console.log($img);
+    let $parent = $target.parent().parent();
+    if($target.is('img')) {
+      $img = $target;
+      cardsFlipped.push($img);
+      $('#scoreboardOne').html('Moves: ' + moves);
+    }
+    $target.toggleClass('rotated');
+    checkPair();
+
+  } else if (playerOne === false) {
+    let $target = $(event.currentTarget);
+    let $img;
+    // console.log($img);
+    let $parent = $target.parent().parent();
+    if($target.is('img')) {
+      $img = $target;
+      cardsFlipped.push($img);
+      $('#scoreboardTwo').html('Moves: ' + cardsFlipped.length);
+    }
+    $target.toggleClass('rotated');
+    checkPair();
   }
-  $target.toggleClass('rotated');
-  checkPair();
+
 }
 
 $('.card').on('click', clickCard);
-
 
   // $('.card').on('click', function (e) {
   //   let $target = $(e.currentTarget);
@@ -302,6 +326,7 @@ $('.card').on('click', clickCard);
 
 // create a function to check whether a pair cards is matched
 const checkPair = () => {
+  // moves++;
     //check that two cards have been flipped
       //LATER: disable all other card flips until match has been determined/animation resolved
       // console.log('hi');
@@ -442,9 +467,9 @@ const checkForWin = () => {
     if (matchedCards.length === 16 && moves >= 8 && moves < 18) {
       //then all cards have been matched
       //create a win/winState function that runs once a win is determined
-     let winChoice = prompt('You beat the Matrix phase 2! Challenge player 2?', 'yes / no');
+     let winChoice = prompt('You beat the Matrix Phase 1! Hand it off to player 2?', 'yes / no');
       if (winChoice === 'yes') {
-        // switchPlayer();
+        playerOne = false;
         startGame();
       } else if (winChoice === 'no') {
         startGame();
@@ -453,7 +478,7 @@ const checkForWin = () => {
      // openModalWin();
      //modalWin();
     //if all cards have not yet been matched, do nothing
-  } else if (moves = 18) {
+  } else if (moves >= 18) {
     console.log('LOOSAH!');
     // $('openModalLoss').show();
     openModalLoss();
@@ -482,6 +507,7 @@ checkForWin();
 
 
 });
+
 // //create a function to count player's moves
 // const countMoves = () => {
 //   //increment moves by 1 each turn

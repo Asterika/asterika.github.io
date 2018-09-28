@@ -67,12 +67,10 @@ h1 {
   width: 165px;
 }
 
-
 /* #card.flipped {
   /* backface-visibility: hidden; */
   /* transform: rotateY(-180deg);
 } */
-
 
 /* #card.reverseFlip {
   backface-visibility: hidden;
@@ -82,7 +80,6 @@ h1 {
   backface-visibility: visible;
   transform: rotateY(180deg);
 } */
-
 
 .card > .front {
   backface-visibility: hidden;
@@ -119,6 +116,10 @@ h1 {
   animation-delay: .1s;
 }
 
+/* ------------------------------
+          SCOREBOARDS
+------------------------------ */
+
 #scoreboardOne {
   align-content: center;
   background-color: lime;
@@ -130,8 +131,10 @@ h1 {
   height: 80px;
   margin-left: 100px;
   margin-top: 160px;
+  opacity: 0.75;
   padding-top: 50px;
   padding-left: 55px;
+  text-shadow: 1.5px 1.5px black;
   width: 200px;
 }
 
@@ -147,10 +150,12 @@ h1 {
   justify-content: center;
   margin-right: 85px;
   margin-top: 165px;
+  opacity: 0.75;
   padding-top: 50px;
   padding-left: 55px;
   /* text-align: center; */
   /* padding-left:  */
+  text-shadow: 1.5px 1.5px black;
   width: 200px;
 }
 
@@ -158,6 +163,9 @@ h1 {
   padding: 12px;
 }
 
+/* -----------------------------
+          MODALS
+----------------------------- */
 #modal {
   background-color: rgba(0,0,0,0.4);
   display: none;
@@ -182,10 +190,6 @@ h1 {
   padding: 2%;
   width: 1110px;
 }
-
-/* .switchPlayer {
-
-} */
 
 .red-pill, .blue-pill {
   border-radius: 60px;
@@ -231,9 +235,7 @@ button:focus {outline:0};
   margin-left: 280px;
 }
 
-
-
-.win {
+/* .win {
   background-image: url('../images/matrix-ordered.jpeg');
   border: 1px solid lime;
   border-radius: 2px;
@@ -243,7 +245,7 @@ button:focus {outline:0};
   margin: 50px auto;
   padding: 2%;
   width: 700px;
-}
+} */
 
 /*-------------------------------------*/
 /*-------- Card-Button Classes --------*/

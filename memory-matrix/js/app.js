@@ -108,6 +108,7 @@ const $modal = $('#modal');
 const $redPill = $('button.red-pill');
   $redPill.on('click',function() {
   $('#modal').hide('slow');
+  playerOne = false;
   startGame();
 })
 
@@ -432,7 +433,7 @@ const noMatch = () => {
   //use an if/else statement to check if all cards have been matched
 const checkForWin = () => {
     //if the length of the array of stored matched cards = number of cards
-    if (matchedCards.length === 16 && moves >= 8 && moves < 18) {
+    if (matchedCards.length === 16 && moves >= 8 && moves <= 18) {
       //then all cards have been matched
       //create a win/winState function that runs once a win is determined
      let winChoice = prompt('You beat the Matrix Phase 1! Hand it off to player 2?', 'yes / no');
@@ -445,8 +446,7 @@ const checkForWin = () => {
      // openModalWin();
      //modalWin();
     //if all cards have not yet been matched, do nothing
-  } else if (moves >= 18) {
-    console.log('LOOSAH!');
+  } else if (moves > 18) {
     // $('openModalLoss').show();
     openModalLoss();
     //modalLoss();

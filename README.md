@@ -1,24 +1,24 @@
-#Memory Matrix
+# Memory Matrix
 
 This is my first formal project - a memory matching game with a Matrix theme.
 
-##Technologies Used
+## Technologies Used
 Technologies implemented into this version of Memory Matrix (version 1) include HTML, CSS, Javascript, and jQuery.
 
-##Approach Taken
+## Approach Taken
 The approach taken complements the developer's personal goal for this project: namely, to code a traditional game while integrating rudimentary knowledge of coding principles and practices. The primary objective was to practice implementing and experimenting with various coding techniques and game logic strategies in an effort to produce a functional game with some aesthetic appeal.
 
 I began with a focus on Javascript and jQuery to devote considerable time to creating functions that guide the flow of gameplay and to revising code as errors occurred. Having successfully integrated functions pertaining to clicking and flipping cards, checking pairs of cards for a match, and determining a win or loss state, I then progressed to styling the game with CSS, including visual and interactive elements such as images, a modal, buttons, and scoreboards for each player.
 
-##Link to Live Site
+## Link to Live Site
 Link to live site: https://github.com/Asterika/asterika.github.io
 
 All notes pertaining to this project that document the progression of my logic and code, as well as any attributions, are contained at the above GitHub repository.
 
-##Key Feature
+## Key Feature
 The feature I am most of for this project is the card flip animation. Achieving this animation and the related timing was my primary goal for this project. 
 
-##Unsolved Problems
+## Unsolved Problems
 One of the greatest challenges of the current version is that the cards were initially hard-coded into HTML and are thus unable to be randomized, a key feature of this type of game. If time allows, I would improve future versions by ensuring a Javascript "for loop" is used to generate cards within the game grid, though appending images to the front and back of the cards provided me a challenge that my current skill level could not meet.
 
 Other unsolved problems and outstanding issues include:

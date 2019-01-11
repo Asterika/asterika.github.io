@@ -1,4 +1,4 @@
-![Uploading memory_matrix.png…]()
+
 # Memory Matrix
 
 This is my first formal project - a memory matching game with a Matrix theme.
